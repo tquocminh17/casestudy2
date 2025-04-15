@@ -27,8 +27,11 @@ idehelper: ## Generate IDE Helper
 	./vendor/bin/sail exec app php artisan ide-helper:generate
 	./vendor/bin/sail exec app php artisan ide-helper:models --write --reset
 
-watch-kafka: ## Watch Kafka
+watch-kafka: ## Watch Kafka logs
 	./vendor/bin/sail exec kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic wal --from-beginning
+
+produce-kafka: ## Enter Kafka producer for testing
+	./vendor/bin/sail exec kafka kafka-console-producer --bootstrap-server localhost:9092 --sync --topic wal
 
 .PHONY: help
 help: ## Show help
