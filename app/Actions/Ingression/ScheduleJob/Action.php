@@ -27,12 +27,18 @@ class Action
         );
 
         Kafka::asyncPublish()
-            ->onTopic('wal')
+            ->onTopic($this->topic())
             ->withMessage($message)
             ->send();
 
         $this->eventDispatcher->dispatch(
             new JobScheduled($options->user, $message)
         );
+    }
+
+    private function topic(): string
+    {
+        /** @var string */
+        return config('kafka.topics.ingression');
     }
 }
