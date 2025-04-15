@@ -1,0 +1,15 @@
+includes:
+  - ./vendor/larastan/larastan/extension.neon
+  - ./vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+  level: max
+  paths:
+    - app
+  reportMaybesInPropertyPhpDocTypes: false
+  reportMaybesInMethodSignatures: false
+  strictRules:
+    booleansInConditions: false
+    strictFunctionCalls: false
+    disallowedShortTernary: false
+    dynamicCallOnStaticMethod: false
